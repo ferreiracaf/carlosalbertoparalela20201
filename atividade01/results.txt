@@ -1,4 +1,9 @@
-# Core i7 7700HQ 16GB
+# Intel Core i7 7700HQ 16GB
 1m29,995s
 0m21,871s
 0m21,530s
+
+# AMD Ryzen 5 3600 16GB
+1m9.897s
+0m9.689s 
+0m9.559s 
