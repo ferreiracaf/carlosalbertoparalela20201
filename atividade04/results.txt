@@ -1,0 +1,5 @@
+Número de cores     Tempo de Execução       Diferença
+2                   0m17.859s               1.73947
+4                   0m9.587s                1.81802
+8                   0m7.263s                1.40474
+12                  0m5.428s                1.08398
