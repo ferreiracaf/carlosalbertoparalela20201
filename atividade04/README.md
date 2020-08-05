@@ -3,7 +3,7 @@
 A partir do código disponibilizado pelo professor ([link](https://github.com/jmhal/parallel/tree/master/jacobi)), tentei algumas modificações usando as _'pragmas'_ do openmp descritas a seguir:
 * **colapse:** não achei que caberia o uso deste, pois tinham laços for não aninhados dentro de alguns aninhados.
 * **nested:** tentei usar esta diretiva, entretanto como resultado obtive algumas inconsistenciase por isso optei por não mantê-la.
-* **static ou dynamic:** usando estas diretivas, acredito que por se tratar de um programa com uma entrada grande e tantas interações eu não percebi tantas diferenças.
+* **static ou dynamic:** usando estas diretivas, acredito que por se tratar de um programa com uma entrada grande e tantas interações que já estão tão otimizadas, eu não pude perceber tanta diferença.
 
 Os melhores resultados que obtive foram usando apenas as diretivas _'parallel for'_, com os seguintes resultados:
 
