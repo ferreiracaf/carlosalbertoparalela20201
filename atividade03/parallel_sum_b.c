@@ -1,3 +1,4 @@
+// Correção: OK. 1,0 ponto pelo atraso.
 #include <stdio.h>
 #include <omp.h>
 
@@ -24,7 +25,7 @@ int main (int argc , char *argv[]) {
             for(int j = lo; j <= hi; j++)
                 partial_sum = partial_sum + j;
             
-           printf("%d: %d -> %d\n", t, lo, hi);
+           printf("%d: %d -> %d (%d) \n", t, lo, hi, hi - lo);
            printf("partial: %d\n", partial_sum);
 
         }
