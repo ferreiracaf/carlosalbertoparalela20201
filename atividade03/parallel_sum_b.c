@@ -1,4 +1,4 @@
-// Correção: OK. 1,0 ponto pelo atraso.
+// Correção: OK. 1,0 ponto pela imprecisão nos valores grandes.
 #include <stdio.h>
 #include <omp.h>
 
