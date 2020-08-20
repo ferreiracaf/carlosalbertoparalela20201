@@ -1,4 +1,4 @@
-*Correção: OK. 2,0 pontos pelo atraso.*
+*Correção: OK. 2,5 pontos.*
 # Atividade 02
 
 ### Questão 01
