@@ -1,4 +1,4 @@
-// Correção: Veja observação abaixo. 1,5 pontos pelo atraso. 
+// Correção: Veja observação abaixo. 2,0 Pontos.
 /*
     Loop unrolling. 
 */
