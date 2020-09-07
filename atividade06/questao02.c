@@ -17,17 +17,28 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < size; i++)
         input_array[i] = rank * size + i;
 
-    printf("Input for process %d\n", rank);
-    for (i = 0; i < size; i++)
-        printf("%d ", input_array[i]);
-    printf("\n");
+    // printf("Input for process %d\n", rank);
+    // for (i = 0; i < size; i++)
+    //     printf("%d ", input_array[i]);
+    // printf("\n");
 
-    MPI_Alltoall(input_array, 1, MPI_INT, output_array, 1, MPI_INT, MPI_COMM_WORLD);
+    MPI_Alltoall(input_array, 2, MPI_INT, output_array, 2, MPI_INT, MPI_COMM_WORLD);
 
+    for (int i = 0; i < size; i++){
+        MPI_Gather(&input_array[i], 1, MPI_INT, &output_array[i], 1, MPI_INT, i, MPI_COMM_WORLD);
+    }
+    // printf("%d\n", input_array[2]);
+    // MPI_Gather(&input_array[0], 1, MPI_INT, &output_array[0], 1, MPI_INT, 0, MPI_COMM_WORLD);
+    // MPI_Gather(&input_array[1], 1, MPI_INT, &output_array[1], 1, MPI_INT, 1, MPI_COMM_WORLD);
+    // MPI_Gather(&input_array[2], 1, MPI_INT, &output_array[2], 1, MPI_INT, 2, MPI_COMM_WORLD);
+
+    // printf("\t\t-> %d, %d, %d\nOutput for process %d\n", input_array[0], input_array[1], input_array[2], rank);
     printf("Output for process %d\n", rank);
     for (i = 0; i < size; i++)
         printf("%d ", output_array[i]);
     printf("\n");
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     free(input_array);
     free(output_array);

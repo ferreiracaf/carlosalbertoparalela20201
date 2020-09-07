@@ -1,0 +1,8 @@
+# Máquina 8 núcleos AWS
+# N = 1024 * 1024 
+# Processos         Tempo 
+1                   
+2                   
+4                   0.155644
+6                   0.159933
+8                   0.164630

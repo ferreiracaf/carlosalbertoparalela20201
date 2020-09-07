@@ -5,6 +5,7 @@
 int main(int argc, char *argv[]) {
     int rank, size, n;
     int root = 0;
+    double resultado;
     double *vect_a_root, *vect_b_root, *vect_c_root;
 
     double start, finish;
@@ -26,12 +27,14 @@ int main(int argc, char *argv[]) {
             vect_b_root[i] = b;
         }
     }
-
+    
     MPI_Bcast(&n, 1, MPI_INT, root, MPI_COMM_WORLD);
 
     int partial = n/size;
 
-    double vect_a[partial], vect_b[partial], vect_c[partial];
+    double *vect_a = (double *) malloc(partial * sizeof(double));
+    double *vect_b = (double *) malloc(partial * sizeof(double));
+    double *vect_c = (double *) malloc(partial * sizeof(double));
 
     MPI_Scatter(vect_a_root, partial, MPI_DOUBLE, vect_a, partial, MPI_DOUBLE, root, MPI_COMM_WORLD);
     MPI_Scatter(vect_b_root, partial, MPI_DOUBLE, vect_b, partial, MPI_DOUBLE, root, MPI_COMM_WORLD);
@@ -47,14 +50,17 @@ int main(int argc, char *argv[]) {
     if(rank == root){
         printf("Produto escalar no processo root %d: \n", rank);
         for (int i = 0; i < n; i++) {
-            printf("%.2f ", vect_c_root[i]);
+            resultado += vect_c_root[i];
         }
-        printf("\n");
+        printf("Resultado: %.2f\n", resultado);
         printf("Tempo gasto: %f\n", finish - start);
         free(vect_a_root);
         free(vect_b_root);
         free(vect_c_root);
     }
+    free(vect_a);
+    free(vect_b);
+    free(vect_c);
 
     MPI_Finalize();
     return 0;
