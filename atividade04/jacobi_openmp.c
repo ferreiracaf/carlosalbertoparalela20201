@@ -1,3 +1,4 @@
+// Correção: Veja observação abaixo. 2,0 Pontos.
 /*
     Loop unrolling. 
 */
@@ -22,7 +23,9 @@ int main(int argc, char *argv[]){
     stableValues2dMatrix(grid, n+2, n+2);
     
     // omp_set_nested(1);
-
+    // Estou achando que este for mais interno prejudica sua solução. As iterações do laço em k serão executadas em paralelo. Só que K é
+    // "tempo" da simulação. Então, por exemplo, a iteração com k = 200, pode ser executado antes da iteração com k = 20. A solução correta seria
+    // inverter seus comentários: comentar a parallel for externa e descomentar a externa. Como parece que você ficou em dúvida nesta situação, irei considerar. 
     #pragma omp parallel for
     for (int k = 0; k < iters; k = k + 2) {
         // #pragma omp parallel for
