@@ -32,7 +32,8 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < max; i++){
             chunk[i % (count-1)] = i;
             if (i % (count-1) == 0){
-                MPI_Issend(chunk, count, MPI_INT, target, tag, MPI_COMM_WORLD);
+                MPI_Request request;
+                MPI_Issend(chunk, count, MPI_INT, target, tag, MPI_COMM_WORLD, &request);
                 target = target + 1;
                 if(target >= size) target = 1;
                 tag++;
@@ -42,7 +43,7 @@ int main(int argc, char *argv[]) {
     }
     else {
         MPI_Status status;
-        MPI_Recv(chunk, count, MPI_INT, root, tag, MPI_COMM_WORLD, status);
+        MPI_Recv(chunk, count, MPI_INT, root, tag, MPI_COMM_WORLD, &status);
         for (int i = 0; i < count; i++){
             printf("%d ", chunk[i]);
         }
