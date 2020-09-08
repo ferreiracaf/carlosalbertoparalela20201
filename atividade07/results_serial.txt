@@ -1,0 +1,6 @@
+# AMD Ryzen 3600
+# N     Tempo mtxMult       Tempo mtxMult_linemajor
+64      0m0.009s                 0m0.009s
+256     0m0.078s                 0m0.075s
+1024    0m5.433s                 0m5.325s
+2048    1m19.791s                1m3.707s
