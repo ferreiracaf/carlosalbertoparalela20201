@@ -12,47 +12,77 @@ int primo (int n) {
     }
  return resultado;
 }
+
+/*********************************************
+ *
+ *  De acordo com a minha implementação entende-se 
+ *  como quantidade de núcleos a quantide de núcleos
+ *  que avaliam a primalidade do número.
+ *  Portanto, para a implementação e testes foram
+ *  utilizaods os seguintes valores de np: 3, 5, 9;
+ *  os quais representam as divisões feitas para
+ *  computação de primelidade em 2, 4 e 8 núcleos. 
+ *   
+ ********************************************/
                 
 int main(int argc, char *argv[]) {
     int rank, size, n;
     int root = 0;
-    int max = 1000;
-    double start, finish;
-    start = MPI_Wtime();
-    int count = 100;
+    int max = 1024000;
+    int max_print = 1000000;
+    int count = 128;
     int chunk[count];
+    int aux[count];
     int target = 1;
     int tag = 0;
+
+    double start, finish;
+    start = MPI_Wtime();
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     if (rank == root){
-        for (int i = 0; i < max; i++){
-            chunk[i % (count-1)] = i;
-            if (i % (count-1) == 0){
-                MPI_Request request;
-                MPI_Issend(chunk, count, MPI_INT, target, tag, MPI_COMM_WORLD, &request);
+        int total[max];
+        for (int i = 1; i <= max; i++){
+            int posicao = ((i % count) - 1) >= 0 ? ((i % count) - 1) : count - 1; 
+            chunk[posicao] = i;
+            if (i != 0 && i % (count) == 0){
+                MPI_Request sendRequest, recvRequest;
+                MPI_Status sendStatus, recvStatus;
+                MPI_Issend(chunk, count, MPI_INT, target, tag, MPI_COMM_WORLD, &sendRequest);
+
+                MPI_Irecv(aux, count, MPI_INT, target, MPI_ANY_TAG, MPI_COMM_WORLD, &recvRequest);
+                MPI_Wait(&recvRequest, &recvStatus);
+                for(int j = 0; j < count; j++){
+                    total[j + (recvStatus.MPI_TAG * count)] = aux[j];
+                }
                 target = target + 1;
                 if(target >= size) target = 1;
                 tag++;
+                MPI_Wait(&sendRequest, &sendStatus);
             }
         }
-
+        int soma_primos = 0;
+        printf("Primos:\n");
+        for (int i = 0; i < max_print; i++) if (!total[i]){ printf("%d ", i+1); soma_primos++; }
+        printf("\nSoma = %d\n", soma_primos); 
     }
     else {
-        MPI_Status status;
-        MPI_Recv(chunk, count, MPI_INT, root, tag, MPI_COMM_WORLD, &status);
-        for (int i = 0; i < count; i++){
-            printf("%d ", chunk[i]);
+        for (int j = 0; j < ((max/count)/(size-1)); j++){
+            MPI_Request sendRequest, recvRequest;
+            MPI_Status sendStatus, recvStatus;
+            MPI_Irecv(chunk, count, MPI_INT, root, MPI_ANY_TAG, MPI_COMM_WORLD, &recvRequest);
+            MPI_Wait(&recvRequest, &recvStatus);
+            for (int i = 0; i < count; i++){
+                aux[i] = primo(chunk[i]);
+            }
+            MPI_Issend(aux, count, MPI_INT, root, recvStatus.MPI_TAG, MPI_COMM_WORLD, &sendRequest);
+            MPI_Wait(&sendRequest, &sendStatus);
         }
-        printf("\n");
     }
-    
-
-    
-
+   
     MPI_Finalize();
     return 0;
 }
