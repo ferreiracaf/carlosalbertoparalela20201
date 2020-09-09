@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
     srand(MPI_Wtime() * rank);
     random_numbers = (float *) malloc(sizeof(float) * NELEM);
     for(i = 0; i < NELEM; i++)
-        random_numbers[i] = i;//(rand()/(float)RAND_MAX);
+        random_numbers[i] = (rand()/(float)RAND_MAX);
 
     for(i = 0; i < NELEM; i++)
         sum_local += random_numbers[i];
