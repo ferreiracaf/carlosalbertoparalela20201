@@ -1,3 +1,4 @@
+// Nota 0,5
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,7 +12,9 @@
  * com o scatter os chunks de a e b para serem computador e após isso recuperar o valor no 
  * vetor c com um reduce com a operação de soma que me daria o valor de um elemento da matriz
  * resultante. Infelizmente das formas que acabei colocando não obtive o resultado esperado a tempo.  
- * 
+ *
+ * Correção: era só ter seguido os passos da questão. Não precisa distribuir b, apenas fazer broadcast dela.
+ * Transposta? Não tem que transpor a matriz.
 */
 
 double * mtxMul(double * c, double * a, double * b, int n){
