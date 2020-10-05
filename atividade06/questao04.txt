@@ -1,3 +1,4 @@
+# Nota 1,0
 # Máquina 8 núcleos AWS
 # N = 1024 * 1024 
 # Processos         Tempo 
