@@ -1,3 +1,5 @@
+// Nota 0,3
+// Você não precisava substituir o All_to_all, apenas mudar os parâmetros e algumas variáveis.
 // Cálculo das Médias
 #include <stdio.h>
 #include <stdlib.h>
