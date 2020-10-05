@@ -1,3 +1,4 @@
+# Nota 0,4. Pelo menos nos códigos que você carregou, N está 1024, não 1024 * 1024.
 # AMD Ryzen 5 3600
 # N = 1024 * 1024 
 # Processos    Tempo MPI_Allreduce  Tempo sem MPI_Allreduce
