@@ -17,7 +17,6 @@
 
 #define PRINT 1
 
-
 #define CL_USE_DEPRECATED_OPENCL_1_2_APIS
 #define CL_TARGET_OPENCL_VERSION 200
 #include <CL/cl.h>
@@ -68,8 +67,13 @@ void printMatrix(cl_float * mat, int num){
 // ***************************************************************************************
 int main (int argc, char *argv[]) {
 
+	// Verificar se são 3 parâmetros.
+	if (argc == 4)
+	{
+		N = atoi(argv[3]);
+	}
 	// Verificar se são 2 parâmetros.
-    if (argc != 3) {
+	else if (argc != 3) {
 		printf("Forneça dois parâmetros:\n");
 		printf("<PLATAFORMA>  : INTEL, NVIDIA ou AMD para definir a plataforma.\n");
 		printf("<DISPOSITIVO> :	GPU ou CPU para definir o dispositivo.\n");
