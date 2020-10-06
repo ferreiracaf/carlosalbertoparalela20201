@@ -1,0 +1,81 @@
+
+# No enunciado da questão o professor fala de um arquivo,
+# mas o link é para outro. Na dúvida coloquei a reposta
+# de ambos abaixo:
+
+#########################
+# clDeviceQuery.cpp 
+#########################
+
+clDeviceQuery Starting...
+
+1 OpenCL Platforms found
+
+ CL_PLATFORM_NAME: 	NVIDIA CUDA
+ CL_PLATFORM_VERSION: 	OpenCL 1.2 CUDA 11.1.70
+OpenCL Device Info:
+
+ 1 devices found supporting OpenCL on: NVIDIA CUDA
+
+ ----------------------------------
+ Device GeForce GTX 1050 Ti
+ ---------------------------------
+  CL_DEVICE_NAME: 			GeForce GTX 1050 Ti
+  CL_DEVICE_VENDOR: 			NVIDIA Corporation
+  CL_DRIVER_VERSION: 			455.23.04
+  CL_DEVICE_TYPE:			CL_DEVICE_TYPE_GPU
+  CL_DEVICE_MAX_COMPUTE_UNITS:		6
+  CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS:	3
+  CL_DEVICE_MAX_WORK_ITEM_SIZES:	1024 / 1024 / 64 
+  CL_DEVICE_MAX_WORK_GROUP_SIZE:	1024
+  CL_DEVICE_MAX_CLOCK_FREQUENCY:	1620 MHz
+  CL_DEVICE_ADDRESS_BITS:		64
+  CL_DEVICE_MAX_MEM_ALLOC_SIZE:		1010 MByte
+  CL_DEVICE_GLOBAL_MEM_SIZE:		4042 MByte
+  CL_DEVICE_ERROR_CORRECTION_SUPPORT:	no
+  CL_DEVICE_LOCAL_MEM_TYPE:		local
+  CL_DEVICE_LOCAL_MEM_SIZE:		48 KByte
+  CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE:	64 KByte
+  CL_DEVICE_QUEUE_PROPERTIES:		CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE
+  CL_DEVICE_QUEUE_PROPERTIES:		CL_QUEUE_PROFILING_ENABLE
+  CL_DEVICE_IMAGE_SUPPORT:		1
+  CL_DEVICE_MAX_READ_IMAGE_ARGS:	256
+  CL_DEVICE_MAX_WRITE_IMAGE_ARGS:	16
+
+  CL_DEVICE_IMAGE <dim>			2D_MAX_WIDTH	 16384
+					2D_MAX_HEIGHT	 32768
+					3D_MAX_WIDTH	 16384
+					3D_MAX_HEIGHT	 16384
+					3D_MAX_DEPTH	 16384
+  CL_DEVICE_PREFERRED_VECTOR_WIDTH_<t>	CHAR 1, SHORT 1, INT 1, FLOAT 1, DOUBLE 1
+
+
+clDeviceQuery, Platform Name = NVIDIA CUDA, Platform Version = OpenCL 1.2 CUDA 11.1.70, NumDevs = 1, Device = GeForce GTX 1050 Ti
+
+System Info: 
+
+ Local Time/Date =  20:52:45, 10/05/2020
+ CPU Name: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz 
+ # of CPU processors: 8
+ Linux version 5.4.0-7642-generic (buildd@lcy01-amd64-007) (gcc version 9.3.0 (Ubuntu 9.3.0-10ubuntu2)) #46~1598628707~20.04~040157c-Ubuntu SMP Fri Aug 28 18:02:16 UTC 
+
+
+TEST PASSED
+
+
+#########################
+# host.c 
+#########################
+
+Quantidade de Plataformas: 1
+
+Plataforma[0]: NVIDIA CUDA
+Quantidade de dispositivos NVIDIA CUDA: 1
+=== Dispositivos da Plataforma NVIDIA CUDA: ===
+ -- Dispositivo com id 0 --
+ DEVICE_NAME = GeForce GTX 1050 Ti
+ DEVICE_VENDOR = NVIDIA Corporation
+ DEVICE_MAX_COMPUTE_UNITS = 6
+ CL_DEVICE_MAX_WORK_GROUP_SIZE = 1024
+ CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS = 3
+ CL_DEVICE_MAX_WORK_ITEM_SIZES = 1024, 1024, 64
