@@ -15,7 +15,7 @@
 #define WINDOWS 1
 #endif
 
-#define PRINT 1
+#define PRINT 0
 
 #define CL_USE_DEPRECATED_OPENCL_1_2_APIS
 #define CL_TARGET_OPENCL_VERSION 200
@@ -380,6 +380,15 @@ int main (int argc, char *argv[]) {
 
 	// Verifica o resultado
 	if (PRINT) printMatrix(srcC, N);
+	printf("\n");
+
+	int diff = 0;
+	for (int i = 0; i < N; i++){
+		if(srcA[i] != srcC[i*N])
+			diff = 1;
+	}
+	diff == 0 ? printf("Resultado correto após comparar a primeira linha de A com a primeira coluna de C\n"):printf("Resultado incorrreto\n");
+	
 
 	// Limpar
 	free(srcA);
