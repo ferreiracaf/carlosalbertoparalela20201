@@ -1,4 +1,4 @@
-
+# Correção: OK. Nota: 2,5
 # No enunciado da questão o professor fala de um arquivo,
 # mas o link é para outro. Na dúvida coloquei a reposta
 # de ambos abaixo:

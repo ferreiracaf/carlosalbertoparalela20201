@@ -1,3 +1,4 @@
+// Correção: OK. Nota: 2,5
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +34,7 @@ cl_ulong buf_ulong;
 size_t buf_sizet;
 // Dimensão da Matriz
 // cl_int N = 3584;
-cl_int N = 16;
+cl_int N = 256;
 
 // Ponteiros para as Matrizes na Memória da CPU
 cl_float* srcA;
